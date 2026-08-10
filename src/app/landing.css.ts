@@ -1020,6 +1020,7 @@ export const solutionCardDesc = style({
   lineHeight: 1.5,
   letterSpacing: '-0.03em',
   color: colors.gray500,
+  whiteSpace: 'pre-line',
   wordBreak: 'keep-all',
   overflowWrap: 'break-word',
   '@media': { '(min-width: 768px)': { fontSize: '18px' }, '(min-width: 1200px)': { fontSize: '20px' } },

@@ -26,27 +26,27 @@ export const painPoints = [
 
 export const solutions = [
   {
-    pain: '여러 학원 오가며\n관리할 시간 부족',
-    title: '한 곳에서 모든 반 관리',
-    description: '학원이 여러 곳이어도 반과 학생을 한 화면에서 확인해요.',
+    pain: '일일히 한명씩\n출결 체크',
+    title: '알림톡 출결',
+    description: '학생에게 알림톡으로 출결 링크가\n발송되어 편하게 체크해요',
     icon: '/images/icon-folder.png',
   },
   {
     pain: '출결·과제·문자\n전부 혼자 챙김',
     title: '수업 기록 · 추적 자동화',
-    description: '미완료 학생을 자동으로 추려줘서 놓치는 일이 없어요.',
+    description: '미완료 학생을 자동으로 추려줘서\n놓치는 일이 없어요',
     icon: '/images/icon-star.png',
   },
   {
     pain: '학부모 문자\n30분 이상 소요',
-    title: '문자 자동 생성',
-    description: '수업 데이터를 입력하면 학생별 문자가 자동으로 완성돼요.',
+    title: '간편한 문자 생성 및 알림톡 발송',
+    description: '수업 데이터를 입력하면\n버튼 하나로 알림톡이 발송돼요',
     icon: '/images/icon-message.png',
   },
   {
     pain: '체계는 필요한데\n시스템은 부담스러움',
     title: '가입 후 바로 시작',
-    description: '설치도, 미팅도 필요 없어요. 오늘 당장 쓸 수 있어요.',
+    description: '설치도, 미팅도 필요 없어요.\n오늘 당장 쓸 수 있어요',
     icon: '/images/icon-click.png',
   },
 ]
