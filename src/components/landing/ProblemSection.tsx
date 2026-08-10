@@ -9,26 +9,22 @@ import { cardHover, fadeUp } from '@/lib/motion-presets'
 import * as s from '@/app/landing.css'
 
 function PainCardText({
-  lines,
+  parts,
 }: {
-  lines: { parts: string[]; highlight?: string }[]
+  parts: { text: string; highlight?: boolean }[]
 }) {
   return (
-    <div className={s.painText}>
-      {lines.map((line, lineIndex) => (
-        <p key={lineIndex}>
-          {line.parts.map((part, i) =>
-            part === line.highlight ? (
-              <span key={i} className={s.highlight}>
-                {part}
-              </span>
-            ) : (
-              <span key={i}>{part}</span>
-            ),
-          )}
-        </p>
-      ))}
-    </div>
+    <p className={s.painText}>
+      {parts.map((part, i) =>
+        part.highlight ? (
+          <span key={i} className={s.highlight}>
+            {part.text}
+          </span>
+        ) : (
+          <span key={i}>{part.text}</span>
+        ),
+      )}
+    </p>
   )
 }
 
@@ -62,7 +58,7 @@ export default function ProblemSection() {
               >
                 <LandingImage src={item.image} alt="" className={s.painImage} aria-hidden />
               </motion.div>
-              <PainCardText lines={item.lines} />
+              <PainCardText parts={item.parts} />
             </motion.article>
           ))}
         </Stagger>

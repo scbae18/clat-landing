@@ -13,7 +13,6 @@ const NAV_ITEMS = [
   { href: '#about', label: '소개' },
   { href: '#solution', label: '해결' },
   { href: '#steps', label: '사용법' },
-  { href: '#benefits', label: '가치' },
 ]
 
 export default function Header() {

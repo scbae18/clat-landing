@@ -1,60 +1,70 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
+import LandingImage from '@/components/landing/LandingImage'
 import Reveal from '@/components/motion/Reveal'
 import Stagger from '@/components/motion/Stagger'
+import { benefits } from '@/lib/landing-content'
 import { cardHover, fadeUp } from '@/lib/motion-presets'
 import * as s from '@/app/landing.css'
-
-const FEATURES = [
-  {
-    icon: '📋',
-    title: '수업 기록',
-    desc: '출결, 점수, 과제를 한 흐름으로',
-  },
-  {
-    icon: '🔔',
-    title: '학부모 알림',
-    desc: '알림톡으로 자동 발송',
-  },
-  {
-    icon: '📊',
-    title: '학생 추적',
-    desc: '미완료 항목 자동 추적',
-  },
-]
 
 export default function AboutSection() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section id="about" className={`${s.section} ${s.aboutSection}`}>
-      <div className={s.container}>
-        <Reveal className={s.aboutContent}>
-          <h2 className={s.sectionTitle}>클랫이란?</h2>
-          <p className={s.aboutBody}>
-            클랫은 &ldquo;학원 선생님을 위한 수업 관리 도구&rdquo;입니다. 수업 기록, 학생 추적,
-            학부모 알림, 이 세 가지를 하나의 흐름으로 처리합니다. 설치도, 미팅도 필요 없습니다.
-            가입하는 날 바로 시작할 수 있습니다.
-          </p>
-        </Reveal>
+    <section id="about" className={s.aboutSection}>
+      <div className={`${s.section} ${s.aboutHeaderWrap}`}>
+        <div className={s.container}>
+          <div className={s.aboutHeader}>
+            <h2 className={s.sectionTitle}>클랫이란?</h2>
+            <p className={s.aboutBody}>
+              클랫은 학원 선생님을 위한 수업 관리 도구입니다. 설치도, 미팅도 필요 없고, 가입하는
+              날부터 바로 시작할 수 있어요.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        <Stagger className={s.aboutFeatureGrid}>
-          {FEATURES.map((f) => (
-            <motion.div
-              key={f.title}
-              className={s.aboutFeatureCard}
-              variants={fadeUp}
-              whileHover={reduceMotion ? undefined : cardHover}
-            >
-              <div className={s.aboutFeatureIcon} aria-hidden>
-                {f.icon}
-              </div>
-              <h3 className={s.aboutFeatureTitle}>{f.title}</h3>
-              <p className={s.aboutFeatureDesc}>{f.desc}</p>
-            </motion.div>
-          ))}
-        </Stagger>
+      <div className={s.section} style={{ paddingTop: 0 }}>
+        <div className={s.container}>
+          <div className={s.aboutLayout}>
+            <Reveal className={s.aboutIntro}>
+              <h3 className={s.aboutIntroTitle}>
+                선생님의 수업 외 시간을
+                <br />
+                클랫이 돌려드릴게요.
+              </h3>
+              <p className={s.aboutIntroDesc}>
+                수업 기록, 학생 추적, 학부모 문자.
+                <br />
+                세 가지를 하나의 흐름으로 처리해요.
+              </p>
+            </Reveal>
+
+            <Stagger className={s.aboutValueList}>
+              {benefits.map((item) => (
+                <motion.article
+                  key={item.badge}
+                  className={s.aboutValueCard}
+                  variants={fadeUp}
+                  whileHover={reduceMotion ? undefined : cardHover}
+                >
+                  <span className={s.aboutValueBadge}>{item.badge}</span>
+                  <div className={s.aboutValueBody}>
+                    <h4 className={s.aboutValueTitle}>{item.title}</h4>
+                    <p className={s.aboutValueDesc}>{item.description}</p>
+                  </div>
+                  <LandingImage
+                    src={item.image}
+                    alt=""
+                    className={s.aboutValueImage}
+                    aria-hidden
+                  />
+                </motion.article>
+              ))}
+            </Stagger>
+          </div>
+        </div>
       </div>
     </section>
   )

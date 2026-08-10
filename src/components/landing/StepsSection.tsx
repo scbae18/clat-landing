@@ -1,170 +1,137 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
-import LandingImage from '@/components/landing/LandingImage'
-import Reveal from '@/components/motion/Reveal'
-import { steps, type StepImage } from '@/lib/landing-content'
-import { slideFromLeft, slideFromRight } from '@/lib/motion-presets'
-import * as s from '@/app/landing.css'
+import { Fragment } from 'react'
+import StepMediaView from '@/components/landing/StepMediaView'
+import { steps } from '@/lib/landing-content'
+import * as s from '@/app/steps-figma.css'
 
-function StepImages({ images }: { images: StepImage }) {
-  const reduceMotion = useReducedMotion()
+function cx(...parts: Array<string | false | null | undefined>) {
+  return parts.filter(Boolean).join(' ')
+}
 
-  const imageMotion = reduceMotion
-    ? {}
-    : {
-        whileHover: { scale: 1.02, transition: { duration: 0.35 } },
-      }
-
-  if (images.type === 'single') {
-    return (
-      <motion.div {...imageMotion}>
-        <LandingImage
-          src={images.src}
-          alt={images.alt}
-          className={s.stepImageSingle}
-          sizes="(max-width: 1024px) 100vw, 560px"
-        />
-      </motion.div>
-    )
-  }
-
-  if (images.type === 'double') {
-    return (
-      <div className={s.stepImageDoubleWrap}>
-        <motion.div {...imageMotion}>
-          <LandingImage
-            src={images.primary}
-            alt={images.alt}
-            className={s.stepImageDoubleMain}
-            sizes="(max-width: 1024px) 100vw, 560px"
-          />
-        </motion.div>
-        <motion.div
-          {...(reduceMotion
-            ? {}
-            : {
-                initial: { opacity: 0, y: 20, x: 20 },
-                whileInView: { opacity: 1, y: 0, x: 0 },
-                viewport: { once: true, margin: '-40px' },
-                transition: { delay: 0.25, duration: 0.6 },
-              })}
-        >
-          <LandingImage
-            src={images.secondary}
-            alt=""
-            className={s.stepImageDoubleOverlay}
-            sizes="(max-width: 1024px) 45vw, 240px"
-            aria-hidden
-          />
-        </motion.div>
-      </div>
-    )
-  }
-
-  const bottomClass =
-    images.bottomVariant === 'banner' ? s.stepImageStackWide : s.stepImageBottom
-
+function SoftTitle({
+  id,
+  title,
+  className,
+}: {
+  id: string
+  title: string
+  className: string
+}) {
+  const lines = title.split('\n')
   return (
-    <div className={s.stepImageStack}>
-      <motion.div {...imageMotion}>
-        <LandingImage
-          src={images.top}
-          alt={images.alt}
-          className={s.stepImageTop}
-          sizes="(max-width: 1024px) 72vw, 400px"
-        />
-      </motion.div>
-      <motion.div
-        {...(reduceMotion
-          ? {}
-          : {
-              initial: { opacity: 0, y: 24 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true, margin: '-40px' },
-              transition: { delay: 0.3, duration: 0.6 },
-            })}
-      >
-        <LandingImage
-          src={images.bottom}
-          alt=""
-          className={bottomClass}
-          sizes="(max-width: 1024px) 68vw, 380px"
-          aria-hidden
-        />
-      </motion.div>
-    </div>
+    <h3 id={id} className={className}>
+      {lines.map((line, index) => (
+        <Fragment key={`${id}-${index}`}>
+          {index > 0 ? (
+            <>
+              <br className={s.stepTitleBreak} />
+              <span className={s.stepTitleSoftSpace}> </span>
+            </>
+          ) : null}
+          {line}
+        </Fragment>
+      ))}
+    </h3>
   )
 }
 
 export default function StepsSection() {
   return (
-    <div id="steps">
-      <section className={s.section} style={{ paddingBottom: '40px' }}>
-        <div className={s.container}>
-          <Reveal>
-            <h2 className={s.sectionTitle}>사용 방법, 순서대로</h2>
-            <p className={s.sectionSubtitle}>
-              처음 한 번만 세팅하면, 이후 수업마다 자동으로 연동됩니다.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+    <div id="steps" className={s.stepsFigmaRoot}>
+      <header className={s.stepsIntro}>
+        <p className={s.stepsIntroEyebrow}>사용법</p>
+        <h2 className={s.stepsIntroTitle}>가입 후, 이 순서만 따라가면 끝이에요</h2>
+        <p className={s.stepsIntroLead}>
+          처음 한 번만 세팅하면 이후 수업마다 기록·문자·추적이 자동으로 이어집니다.
+        </p>
+      </header>
 
-      {steps.map((step, index) => {
-        const textVariant = step.reversed ? slideFromRight : slideFromLeft
-        const imageVariant = step.reversed ? slideFromLeft : slideFromRight
+      {steps.map((step) => {
+        const textSide = step.textSide ?? 'right'
+        const isParent = Boolean(step.notes?.length)
 
         return (
           <section
-            key={step.step}
-            className={`${s.section} ${s.stepSection}`}
-            data-tinted={step.tinted ? 'true' : 'false'}
+            key={step.id}
+            className={cx(
+              s.stepFigmaSlide,
+              step.tone === 'tint' ? s.stepFigmaSlideTint : s.stepFigmaSlideWhite,
+            )}
+            aria-labelledby={`${step.id}-title`}
           >
-            <div className={s.container} style={{ position: 'relative' }}>
-              <div className={s.stepLayout}>
-                <Reveal
-                  className={s.textBlock}
-                  variant={textVariant}
-                  data-reversed={step.reversed ? 'true' : 'false'}
-                >
-                  <div className={s.stepMeta}>
-                    <motion.span
-                      className={s.stepBadge}
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    >
-                      {step.step}
-                    </motion.span>
-                    <span className={s.stepTab}>{step.tab}</span>
-                  </div>
-                  <h3 className={s.stepTitle}>{step.title}</h3>
-                  <div
-                    style={{
-                      marginTop: '24px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '12px',
-                    }}
-                  >
-                    {step.description.map((line) => (
-                      <p key={line} className={s.stepDescText}>
-                        {line}
-                      </p>
+            {step.ellipseSide ? (
+              <img
+                src="/images/steps/ellipse.svg"
+                alt=""
+                className={cx(
+                  s.stepFigmaEllipse,
+                  step.ellipseSide === 'left'
+                    ? s.stepFigmaEllipseLeft
+                    : s.stepFigmaEllipseRight,
+                )}
+                aria-hidden
+              />
+            ) : null}
+
+            <div
+              className={cx(
+                s.stepFigmaInner,
+                textSide === 'left' && s.stepFigmaInnerTextLeft,
+                isParent && s.stepFigmaInnerParent,
+              )}
+            >
+              <div
+                className={cx(
+                  s.stepFigmaMedia,
+                  textSide === 'left' ? s.stepFigmaMediaOrder2 : s.stepFigmaMediaOrder1,
+                )}
+              >
+                <StepMediaView media={step.media} />
+              </div>
+
+              <div
+                className={cx(
+                  s.stepFigmaCopy,
+                  textSide === 'left' ? s.stepFigmaCopyOrder1 : s.stepFigmaCopyOrder2,
+                )}
+              >
+                {isParent && step.notes ? (
+                  <div className={s.stepParentNotes}>
+                    <div className={s.stepFigmaMeta}>
+                      <span className={s.stepFigmaBadge}>{step.step}</span>
+                      {step.tab ? <span className={s.stepFigmaTab}>{step.tab}</span> : null}
+                    </div>
+                    <SoftTitle
+                      id={`${step.id}-title`}
+                      title={step.title}
+                      className={s.stepFigmaTitle}
+                    />
+                    {step.notes.map((note) => (
+                      <article key={note.step} className={s.stepParentNote}>
+                        <span className={s.stepFigmaBadge}>{note.step}</span>
+                        <h4 className={s.stepParentNoteTitle}>{note.title}</h4>
+                        <p className={s.stepParentNoteDesc}>{note.body}</p>
+                      </article>
                     ))}
                   </div>
-                </Reveal>
-
-                {step.images && (
-                  <Reveal
-                    className={`${s.stepImages} ${s.imageBlock}`}
-                    variant={imageVariant}
-                    data-reversed={step.reversed ? 'true' : 'false'}
-                  >
-                    <StepImages images={step.images} />
-                  </Reveal>
+                ) : (
+                  <>
+                    <div className={s.stepFigmaMeta}>
+                      <span className={s.stepFigmaBadge}>{step.step}</span>
+                      {step.tab ? <span className={s.stepFigmaTab}>{step.tab}</span> : null}
+                    </div>
+                    <SoftTitle
+                      id={`${step.id}-title`}
+                      title={step.title}
+                      className={s.stepFigmaTitle}
+                    />
+                    <div className={s.stepFigmaDesc}>
+                      {step.description.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
             </div>

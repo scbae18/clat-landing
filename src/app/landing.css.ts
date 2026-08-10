@@ -352,14 +352,16 @@ export const painCard = style({
 export const solutionCard = style({
   backgroundColor: colors.white,
   borderRadius: '32px',
-  padding: '40px 24px 32px',
+  padding: '40px 20px 32px',
   textAlign: 'center',
+  width: '100%',
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   border: '1px solid rgba(255,255,255,0.2)',
   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '@media': { '(min-width: 1024px)': { minHeight: '320px', padding: '48px 16px 36px' } },
 })
 
 export const benefitCard = style({
@@ -431,6 +433,150 @@ export const stepConnector = style({
       opacity: 0.5,
     },
   },
+})
+
+export const stepSection = style({
+  selectors: {
+    '&[data-tinted="true"]': { backgroundColor: colors.primary50 },
+    '&[data-tinted="false"]': { backgroundColor: colors.white },
+  },
+})
+
+export const stepLayout = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gap: '40px',
+  alignItems: 'center',
+  '@media': {
+    '(min-width: 1024px)': { gridTemplateColumns: '1fr 1fr', gap: '64px' },
+  },
+})
+
+export const stepMeta = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '16px',
+  marginBottom: '24px',
+  flexWrap: 'wrap',
+})
+
+export const stepBadge = style({
+  display: 'inline-flex',
+  padding: '4px 12px',
+  backgroundColor: colors.primary500,
+  color: colors.white,
+  borderRadius: '8px',
+  fontSize: '18px',
+  fontWeight: 600,
+})
+
+export const stepTab = style({ fontSize: '18px', fontWeight: 600, color: colors.gray700 })
+
+export const stepTitle = style({
+  fontSize: '32px',
+  fontWeight: 700,
+  lineHeight: 1.3,
+  letterSpacing: '-0.03em',
+  color: colors.gray900,
+  whiteSpace: 'pre-line',
+  '@media': { '(min-width: 768px)': { fontSize: '48px' } },
+})
+
+export const stepDescText = style({
+  fontSize: '18px',
+  fontWeight: 500,
+  lineHeight: 1.6,
+  color: colors.gray700,
+  '@media': { '(min-width: 768px)': { fontSize: '22px' } },
+})
+
+export const stepDescList = style({
+  marginTop: '24px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '8px',
+})
+
+export const stepTextCol = style({})
+
+export const stepImages = style({
+  position: 'relative',
+  width: '100%',
+  overflow: 'hidden',
+})
+
+export const stepImageSingle = style({
+  width: '100%',
+  height: 'auto',
+  borderRadius: '24px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
+  objectFit: 'contain',
+})
+
+export const stepImageStack = style({
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '48px',
+})
+
+export const stepImageTop = style({
+  width: '72%',
+  height: 'auto',
+  borderRadius: '24px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
+  position: 'relative',
+  zIndex: 1,
+  objectFit: 'contain',
+})
+
+export const stepImageBottom = style({
+  width: '68%',
+  height: 'auto',
+  borderRadius: '24px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
+  position: 'absolute',
+  right: 0,
+  bottom: 0,
+  zIndex: 2,
+  objectFit: 'contain',
+})
+
+export const stepImageStackWide = style({
+  width: '85%',
+  height: 'auto',
+  marginLeft: 'auto',
+  marginTop: '-24px',
+  borderRadius: '12px',
+  boxShadow: '0 0 16px rgba(0, 0, 0, 0.08)',
+  position: 'relative',
+  zIndex: 2,
+  objectFit: 'contain',
+})
+
+export const stepImageDoubleWrap = style({
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '32px',
+})
+
+export const stepImageDoubleMain = style({
+  width: '100%',
+  height: 'auto',
+  borderRadius: '16px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
+  objectFit: 'contain',
+})
+
+export const stepImageDoubleOverlay = style({
+  width: '48%',
+  height: 'auto',
+  borderRadius: '16px',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.08)',
+  position: 'absolute',
+  right: 0,
+  bottom: 0,
+  objectFit: 'contain',
+  '@media': { '(min-width: 768px)': { width: '42%', right: '-12px', bottom: '-24px' } },
 })
 
 export const ctaShimmerButton = style([
@@ -578,26 +724,180 @@ export const painImage = style({
 })
 
 export const painText = style({
-  fontSize: '22px',
+  maxWidth: '18em',
+  margin: '0 auto',
+  fontSize: '20px',
   fontWeight: 600,
-  lineHeight: 1.4,
+  lineHeight: 1.45,
   letterSpacing: '-0.03em',
   color: colors.gray900,
-  '@media': { '(min-width: 768px)': { fontSize: '28px' } },
+  wordBreak: 'keep-all',
+  overflowWrap: 'break-word',
+  '@media': {
+    '(min-width: 768px)': { fontSize: '24px', maxWidth: '11.5em' },
+    '(min-width: 1200px)': { fontSize: '26px' },
+  },
 })
 
 export const aboutSection = style({ backgroundColor: colors.white })
 
-export const aboutContent = style({ maxWidth: '720px', margin: '0 auto', textAlign: 'center' })
+export const aboutHeaderWrap = style({
+  paddingBottom: '40px',
+  '@media': { '(min-width: 768px)': { paddingBottom: '56px' } },
+})
+
+export const aboutHeader = style({
+  maxWidth: '720px',
+  margin: '0 auto',
+  textAlign: 'center',
+})
 
 export const aboutBody = style({
-  marginTop: '32px',
-  fontSize: '18px',
+  marginTop: '24px',
+  fontSize: '17px',
   fontWeight: 500,
   lineHeight: 1.7,
   letterSpacing: '-0.03em',
   color: colors.gray700,
-  '@media': { '(min-width: 768px)': { fontSize: '24px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '22px', marginTop: '32px' } },
+})
+
+export const aboutLayout = style({
+  display: 'grid',
+  gridTemplateColumns: '1fr',
+  gap: '40px',
+  alignItems: 'center',
+  '@media': {
+    '(min-width: 1024px)': {
+      gridTemplateColumns: 'minmax(280px, 0.9fr) minmax(0, 1.15fr)',
+      gap: '48px 56px',
+      alignItems: 'center',
+    },
+  },
+})
+
+export const aboutIntro = style({
+  '@media': {
+    '(min-width: 1024px)': {
+      position: 'sticky',
+      top: '112px',
+      alignSelf: 'center',
+    },
+  },
+})
+
+export const aboutIntroTitle = style({
+  fontSize: '32px',
+  fontWeight: 700,
+  lineHeight: 1.3,
+  letterSpacing: '-0.03em',
+  color: colors.gray900,
+  '@media': { '(min-width: 768px)': { fontSize: '44px' } },
+})
+
+export const aboutIntroDesc = style({
+  marginTop: '24px',
+  fontSize: '18px',
+  fontWeight: 500,
+  lineHeight: 1.55,
+  letterSpacing: '-0.03em',
+  color: colors.gray500,
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '22px', marginTop: '28px' } },
+})
+
+export const aboutValueList = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '28px',
+  '@media': { '(min-width: 768px)': { gap: '40px' } },
+})
+
+export const aboutValueCard = style({
+  position: 'relative',
+  overflow: 'hidden',
+  backgroundColor: colors.gray50,
+  borderRadius: '32px',
+  padding: '56px 28px 32px',
+  minHeight: '160px',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+  '@media': {
+    '(min-width: 768px)': {
+      minHeight: '180px',
+      padding: '64px 40px 36px',
+    },
+  },
+})
+
+export const aboutValueBadge = style({
+  position: 'absolute',
+  top: 0,
+  left: '28px',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minWidth: '120px',
+  height: '44px',
+  padding: '0 20px',
+  backgroundColor: colors.primary500,
+  color: colors.white,
+  borderRadius: '0 0 28px 28px',
+  fontSize: '16px',
+  fontWeight: 600,
+  letterSpacing: '-0.04em',
+  '@media': {
+    '(min-width: 768px)': {
+      left: '40px',
+      minWidth: '140px',
+      height: '52px',
+      fontSize: '22px',
+    },
+  },
+})
+
+export const aboutValueBody = style({
+  position: 'relative',
+  zIndex: 1,
+  maxWidth: '72%',
+  '@media': { '(min-width: 768px)': { maxWidth: '58%' } },
+})
+
+export const aboutValueTitle = style({
+  fontSize: '26px',
+  fontWeight: 700,
+  lineHeight: 1.3,
+  letterSpacing: '-0.03em',
+  color: colors.gray700,
+  marginBottom: '12px',
+  '@media': { '(min-width: 768px)': { fontSize: '36px', marginBottom: '16px' } },
+})
+
+export const aboutValueDesc = style({
+  fontSize: '16px',
+  fontWeight: 500,
+  lineHeight: 1.45,
+  letterSpacing: '-0.04em',
+  color: colors.gray700,
+  '@media': { '(min-width: 768px)': { fontSize: '20px' } },
+})
+
+export const aboutValueImage = style({
+  position: 'absolute',
+  right: '-8%',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  width: 'auto',
+  height: 'auto',
+  maxWidth: '46%',
+  maxHeight: '140%',
+  objectFit: 'contain',
+  opacity: 0.2,
+  pointerEvents: 'none',
+  zIndex: 0,
 })
 
 export const solutionSection = style({
@@ -614,28 +914,35 @@ export const solutionOverlay = style({
   position: 'absolute',
   inset: 0,
   backgroundColor: colors.primary500,
-  opacity: 0.92,
+  opacity: 0.9,
 })
 
 export const solutionContent = style({ position: 'relative', zIndex: 1 })
 
-export const solutionTitle = style([sectionTitle, { color: colors.white }])
+export const solutionTitle = style([
+  sectionTitle,
+  {
+    color: colors.white,
+    letterSpacing: '-0.03em',
+  },
+])
 
 export const solutionGrid = style({
   display: 'grid',
   gridTemplateColumns: '1fr',
   gap: '24px',
-  marginTop: '56px',
+  marginTop: '48px',
   '@media': {
-    '(min-width: 640px)': { gridTemplateColumns: 'repeat(2, 1fr)' },
-    '(min-width: 1024px)': { gridTemplateColumns: 'repeat(4, 1fr)' },
+    '(min-width: 640px)': { gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' },
+    '(min-width: 1024px)': { gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginTop: '56px' },
   },
 })
 
 export const solutionColumn = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: '16px',
+  alignItems: 'center',
+  gap: 0,
 })
 
 export const painBadge = style({
@@ -643,11 +950,13 @@ export const painBadge = style({
   borderRadius: '32px',
   padding: '28px 20px 24px',
   textAlign: 'center',
-  minHeight: '140px',
+  width: '100%',
+  minHeight: '160px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  '@media': { '(min-width: 1024px)': { minHeight: '189px' } },
 })
 
 export const painBadgeLabel = style({
@@ -657,40 +966,63 @@ export const painBadgeLabel = style({
   backgroundColor: 'rgba(59, 81, 204, 0.6)',
   fontSize: '14px',
   fontWeight: 600,
+  letterSpacing: '-0.04em',
   marginBottom: '16px',
+  '@media': { '(min-width: 768px)': { fontSize: '18px' } },
 })
 
 export const painBadgeText = style({
   fontSize: '20px',
-  fontWeight: 600,
+  fontWeight: 700,
   lineHeight: 1.4,
+  letterSpacing: '-0.04em',
   whiteSpace: 'pre-line',
   '@media': { '(min-width: 768px)': { fontSize: '24px' } },
 })
 
+export const solutionConnector = style({
+  display: 'flex',
+  justifyContent: 'center',
+  height: '48px',
+  width: '100%',
+  '@media': { '(min-width: 768px)': { height: '64px' } },
+})
+
+export const solutionConnectorLine = style({
+  display: 'block',
+  width: '5px',
+  height: '100%',
+  objectFit: 'fill',
+})
+
 export const solutionIcon = style({
-  width: '80px',
-  height: '80px',
+  width: '88px',
+  height: '88px',
   objectFit: 'contain',
-  marginBottom: '24px',
+  marginBottom: '20px',
+  '@media': { '(min-width: 768px)': { width: '110px', height: '110px', marginBottom: '24px' } },
 })
 
 export const solutionCardTitle = style({
-  fontSize: '24px',
-  fontWeight: 600,
+  fontSize: '20px',
+  fontWeight: 700,
   lineHeight: 1.4,
+  letterSpacing: '-0.04em',
   color: colors.gray900,
   marginBottom: '12px',
-  '@media': { '(min-width: 768px)': { fontSize: '28px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '24px' }, '(min-width: 1200px)': { fontSize: '26px' } },
 })
 
 export const solutionCardDesc = style({
-  fontSize: '16px',
+  fontSize: '15px',
   fontWeight: 500,
   lineHeight: 1.5,
+  letterSpacing: '-0.03em',
   color: colors.gray500,
-  whiteSpace: 'pre-line',
-  '@media': { '(min-width: 768px)': { fontSize: '20px' } },
+  wordBreak: 'keep-all',
+  overflowWrap: 'break-word',
+  '@media': { '(min-width: 768px)': { fontSize: '18px' }, '(min-width: 1200px)': { fontSize: '20px' } },
 })
 
 export const benefitsLayout = style({
@@ -765,139 +1097,267 @@ export const benefitBgImage = style({
   pointerEvents: 'none',
 })
 
-export const stepSection = style({
-  selectors: {
-    '&[data-tinted="true"]': { backgroundColor: colors.primary50 },
-    '&[data-tinted="false"]': { backgroundColor: colors.white },
-  },
+/** 사용법 리뉴얼 — Figma 원스톱 워크플로우 + 8대 기능 */
+export const stepsRenewSection = style({
+  backgroundColor: colors.white,
 })
 
-export const stepLayout = style({
-  display: 'grid',
-  gridTemplateColumns: '1fr',
-  gap: '40px',
-  alignItems: 'center',
-  '@media': {
-    '(min-width: 1024px)': { gridTemplateColumns: '1fr 1fr', gap: '64px' },
-  },
+export const stepsEyebrow = style({
+  fontSize: '16px',
+  fontWeight: 500,
+  lineHeight: 1.5,
+  letterSpacing: '0.004em',
+  color: colors.gray900,
+  textAlign: 'center',
+  marginBottom: '16px',
+  '@media': { '(min-width: 768px)': { fontSize: '20px', marginBottom: '20px' } },
 })
 
-export const stepMeta = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: '16px',
-  marginBottom: '24px',
-  flexWrap: 'wrap',
-})
-
-export const stepBadge = style({
-  display: 'inline-flex',
-  padding: '4px 12px',
-  backgroundColor: colors.primary500,
-  color: colors.white,
-  borderRadius: '8px',
-  fontSize: '18px',
+export const stepsMainTitle = style({
+  fontSize: '28px',
   fontWeight: 600,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.gray900,
+  textAlign: 'center',
+  '@media': { '(min-width: 768px)': { fontSize: '40px' } },
 })
 
-export const stepTab = style({ fontSize: '18px', fontWeight: 600, color: colors.gray700 })
-
-export const stepTitle = style({
-  fontSize: '32px',
-  fontWeight: 700,
-  lineHeight: 1.3,
+export const stepsLead = style({
+  marginTop: '16px',
+  fontSize: '16px',
+  fontWeight: 400,
+  lineHeight: 1.6,
   letterSpacing: '-0.03em',
   color: colors.gray900,
-  whiteSpace: 'pre-line',
-  '@media': { '(min-width: 768px)': { fontSize: '48px' } },
+  textAlign: 'center',
+  '@media': { '(min-width: 768px)': { fontSize: '20px', marginTop: '20px' } },
 })
 
-export const stepDescText = style({
-  fontSize: '18px',
-  fontWeight: 500,
-  lineHeight: 1.6,
-  color: colors.gray700,
+export const stepsBanner = style({
+  marginTop: '40px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: '56px',
+  padding: '16px 24px',
+  backgroundColor: colors.gray50,
+  borderRadius: '20px',
+  '@media': { '(min-width: 768px)': { marginTop: '48px', minHeight: '68px' } },
+})
+
+export const stepsBannerWide = style({
+  marginTop: '48px',
+  '@media': { '(min-width: 768px)': { marginTop: '64px' } },
+})
+
+export const stepsBannerText = style({
+  fontSize: '16px',
+  fontWeight: 600,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.gray900,
+  textAlign: 'center',
   '@media': { '(min-width: 768px)': { fontSize: '22px' } },
 })
 
-export const stepImages = style({
-  position: 'relative',
+globalStyle(`${stepsBannerText} strong`, {
+  fontWeight: 700,
+  color: colors.primary500,
+})
+
+export const stepsBannerTextStrong = style({
+  fontSize: '16px',
+  fontWeight: 700,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.primary500,
+  textAlign: 'center',
+  '@media': { '(min-width: 768px)': { fontSize: '22px' } },
+})
+
+export const workflowRow = style({
+  marginTop: '20px',
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '8px 4px',
+  '@media': {
+    '(min-width: 1024px)': {
+      flexWrap: 'nowrap',
+      gap: '8px',
+      justifyContent: 'space-between',
+    },
+  },
+})
+
+export const workflowItem = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px',
+})
+
+export const workflowChip = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '2px',
+  padding: '14px 18px',
+  backgroundColor: colors.primary100,
+  borderRadius: '20px',
+  textAlign: 'center',
+  minWidth: '140px',
+  '@media': {
+    '(min-width: 1024px)': {
+      minWidth: 0,
+      flex: 1,
+      padding: '16px 12px',
+    },
+  },
+})
+
+export const workflowKicker = style({
+  fontSize: '13px',
+  fontWeight: 400,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.primary500,
+  '@media': { '(min-width: 768px)': { fontSize: '14px' } },
+})
+
+export const workflowTitle = style({
+  fontSize: '15px',
+  fontWeight: 600,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.primary500,
+  '@media': { '(min-width: 768px)': { fontSize: '18px' } },
+})
+
+export const workflowArrow = style({
+  fontSize: '18px',
+  fontWeight: 600,
+  color: colors.gray700,
+  flexShrink: 0,
+  '@media': { '(min-width: 768px)': { fontSize: '22px' } },
+})
+
+export const featureMapGrid = style({
+  marginTop: '24px',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+  gap: '28px 12px',
+  '@media': {
+    '(min-width: 768px)': {
+      gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+      gap: '28px 16px',
+    },
+    '(min-width: 1200px)': {
+      gridTemplateColumns: 'repeat(8, minmax(0, 1fr))',
+      gap: '0 12px',
+    },
+  },
+})
+
+export const featureMapCol = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  minWidth: 0,
+})
+
+export const featureNameChip = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
   width: '100%',
-  overflow: 'hidden',
-})
-
-export const stepImageSingle = style({
-  width: '100%',
-  height: 'auto',
-  borderRadius: '24px',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
-  objectFit: 'contain',
-})
-
-export const stepImageStack = style({
-  position: 'relative',
-  width: '100%',
-  paddingBottom: '48px',
-})
-
-export const stepImageTop = style({
-  width: '72%',
-  height: 'auto',
-  borderRadius: '24px',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
-  position: 'relative',
-  zIndex: 1,
-  objectFit: 'contain',
-})
-
-export const stepImageBottom = style({
-  width: '68%',
-  height: 'auto',
-  borderRadius: '24px',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
-  position: 'absolute',
-  right: 0,
-  bottom: 0,
-  zIndex: 2,
-  objectFit: 'contain',
-})
-
-export const stepImageStackWide = style({
-  width: '85%',
-  height: 'auto',
-  marginLeft: 'auto',
-  marginTop: '-24px',
-  borderRadius: '12px',
-  boxShadow: '0 0 16px rgba(0, 0, 0, 0.08)',
-  position: 'relative',
-  zIndex: 2,
-  objectFit: 'contain',
-})
-
-export const stepImageDoubleWrap = style({
-  position: 'relative',
-  width: '100%',
-  paddingBottom: '32px',
-})
-
-export const stepImageDoubleMain = style({
-  width: '100%',
-  height: 'auto',
+  minHeight: '80px',
+  padding: '12px 8px',
+  backgroundColor: colors.primary100,
   borderRadius: '16px',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.06)',
-  objectFit: 'contain',
+  textAlign: 'center',
+  fontSize: '14px',
+  fontWeight: 600,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.primary500,
+  selectors: {
+    '&[data-accent="true"]': { backgroundColor: colors.primary200 },
+  },
+  '@media': {
+    '(min-width: 768px)': {
+      minHeight: '88px',
+      borderRadius: '20px',
+      fontSize: '15px',
+    },
+    '(min-width: 1200px)': {
+      minHeight: '96px',
+      fontSize: '15px',
+      padding: '12px 6px',
+    },
+  },
 })
 
-export const stepImageDoubleOverlay = style({
-  width: '48%',
-  height: 'auto',
+globalStyle(`${featureNameChip} span`, {
+  display: 'block',
+})
+
+export const featureConnector = style({
+  display: 'flex',
+  justifyContent: 'center',
+  height: '36px',
+  width: '100%',
+  '@media': { '(min-width: 768px)': { height: '44px' } },
+})
+
+export const featureConnectorLine = style({
+  display: 'block',
+  width: '2px',
+  height: '100%',
+  objectFit: 'fill',
+})
+
+export const featureOutcomeChip = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  minHeight: '80px',
+  padding: '12px 8px',
+  backgroundColor: colors.primary400,
   borderRadius: '16px',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.08)',
-  position: 'absolute',
-  right: 0,
-  bottom: 0,
-  objectFit: 'contain',
-  '@media': { '(min-width: 768px)': { width: '42%', right: '-12px', bottom: '-24px' } },
+  textAlign: 'center',
+  fontSize: '14px',
+  fontWeight: 600,
+  lineHeight: 1.45,
+  letterSpacing: '-0.02em',
+  color: colors.white,
+  '@media': {
+    '(min-width: 768px)': {
+      minHeight: '88px',
+      borderRadius: '20px',
+      fontSize: '15px',
+    },
+    '(min-width: 1200px)': {
+      minHeight: '96px',
+      fontSize: '15px',
+      padding: '12px 6px',
+    },
+  },
+})
+
+globalStyle(`${featureOutcomeChip} span`, {
+  display: 'block',
+})
+
+export const stepsDetailIntro = style({
+  marginTop: '72px',
+  paddingTop: '48px',
+  borderTop: `1px solid ${colors.gray75}`,
 })
 
 export const ctaSection = style({
