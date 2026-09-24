@@ -30,7 +30,7 @@ export default function HeroSection() {
             학원 선생님을 위한 수업 관리 도구
           </motion.div>
 
-          <motion.div variants={fadeUp}>
+          <motion.div className={s.heroLogoWrap} variants={fadeUp}>
             <LandingImage
               src="/images/logo.png"
               alt="클랫"
@@ -41,14 +41,13 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1 className={s.heroTitle} variants={fadeUp}>
-            수업은 가르치는 것만으로
-            <br />
-            <span className={s.heroTitleAccent}>충분해야 합니다</span>
+            <span className={s.heroTitleLine}>수업은 가르치는 것만으로</span>
+            <span className={`${s.heroTitleLine} ${s.heroTitleAccent}`}>충분해야 합니다</span>
           </motion.h1>
 
           <motion.p className={s.heroSubtitle} variants={fadeUp}>
-            수업 기록, 학생 추적, 학부모 알림까지.
-            <br />
+            수업 기록, 학생 추적, 학부모 알림까지.{' '}
+            <br className={s.desktopBreak} />
             가입하고 오늘 바로 시작해 보세요.
           </motion.p>
 

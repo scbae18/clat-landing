@@ -9,7 +9,7 @@ export const stepsFigmaRoot = style({
 export const stepsIntro = style({
   maxWidth: '720px',
   margin: '0 auto',
-  padding: '72px 24px 40px',
+  padding: '48px 20px 24px',
   textAlign: 'center',
   '@media': {
     '(min-width: 768px)': { padding: '96px 32px 48px' },
@@ -26,11 +26,12 @@ export const stepsIntroEyebrow = style({
 })
 
 export const stepsIntroTitle = style({
-  fontSize: '28px',
+  fontSize: '24px',
   fontWeight: 700,
-  lineHeight: 1.3,
+  lineHeight: 1.35,
   letterSpacing: '-0.03em',
   color: colors.gray900,
+  wordBreak: 'keep-all',
   '@media': { '(min-width: 768px)': { fontSize: '40px' } },
 })
 
@@ -98,7 +99,7 @@ export const stepFigmaInner = style({
   alignItems: 'center',
   maxWidth: '1200px',
   margin: '0 auto',
-  padding: '48px 20px',
+  padding: '36px 20px',
   '@media': {
     '(min-width: 768px)': {
       gap: '40px',
@@ -201,7 +202,7 @@ export const stepFigmaTab = style({
 })
 
 export const stepFigmaTitle = style({
-  fontSize: '26px',
+  fontSize: '24px',
   fontWeight: 700,
   lineHeight: 1.35,
   letterSpacing: '-0.03em',
@@ -282,11 +283,14 @@ export const stepFigmaSingle = style({
   display: 'block',
   width: '100%',
   height: 'auto',
-  maxHeight: 'min(62vh, 640px)',
+  maxHeight: 'min(42vh, 420px)',
   objectFit: 'contain',
-  borderRadius: '20px',
+  borderRadius: '16px',
   boxShadow: '0 8px 28px rgba(0,0,0,0.08)',
   margin: '0 auto',
+  '@media': {
+    '(min-width: 768px)': { maxHeight: 'min(62vh, 640px)', borderRadius: '20px' },
+  },
 })
 
 export const stepCluster = style({

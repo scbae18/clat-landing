@@ -9,7 +9,7 @@ export const container = style({
   width: '100%',
   maxWidth: '1200px',
   margin: '0 auto',
-  padding: '0 24px',
+  padding: '0 20px',
   '@media': {
     '(min-width: 768px)': { padding: '0 40px' },
     '(min-width: 1200px)': { padding: '0 100px', maxWidth: '1320px' },
@@ -17,29 +17,31 @@ export const container = style({
 })
 
 export const section = style({
-  padding: '80px 0',
+  padding: '56px 0',
   '@media': { '(min-width: 768px)': { padding: '120px 0' } },
 })
 
 export const sectionTitle = style({
-  fontSize: '32px',
+  fontSize: '26px',
   fontWeight: 700,
-  lineHeight: 1.3,
+  lineHeight: 1.35,
   letterSpacing: '-0.03em',
   color: colors.gray900,
   textAlign: 'center',
+  wordBreak: 'keep-all',
   '@media': { '(min-width: 768px)': { fontSize: '48px' } },
 })
 
 export const sectionSubtitle = style({
-  marginTop: '20px',
-  fontSize: '18px',
+  marginTop: '16px',
+  fontSize: '16px',
   fontWeight: 500,
-  lineHeight: 1.5,
-  letterSpacing: '-0.04em',
+  lineHeight: 1.55,
+  letterSpacing: '-0.03em',
   color: colors.gray500,
   textAlign: 'center',
-  '@media': { '(min-width: 768px)': { fontSize: '28px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '28px', marginTop: '20px' } },
 })
 
 export const highlight = style({ color: colors.primary500 })
@@ -71,7 +73,15 @@ export const headerInner = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  height: '72px',
+  height: '60px',
+  '@media': { '(min-width: 768px)': { height: '72px' } },
+})
+
+export const headerActions = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '4px',
+  '@media': { '(min-width: 768px)': { gap: '12px' } },
 })
 
 export const logo = style({ height: '32px', width: 'auto', objectFit: 'contain' })
@@ -108,6 +118,11 @@ export const ctaButton = style({
       boxShadow: '0 6px 20px rgba(59, 81, 204, 0.35)',
     },
   },
+})
+
+export const headerDesktopCta = style({
+  display: 'none',
+  '@media': { '(min-width: 768px)': { display: 'inline-flex' } },
 })
 
 export const ctaButtonLarge = style([
@@ -159,7 +174,7 @@ const pulseGlow = keyframes({
 
 export const hero = style({
   position: 'relative',
-  padding: '64px 0 80px',
+  padding: '36px 0 48px',
   background: `radial-gradient(ellipse at 50% 0%, ${colors.background} 0%, ${colors.primary100} 55%, ${colors.primary200} 100%)`,
   overflow: 'hidden',
   '@media': { '(min-width: 768px)': { padding: '80px 0 120px' } },
@@ -233,6 +248,10 @@ export const heroBadgeDot = style({
   animation: `${pulseGlow} 2s ease-in-out infinite`,
 })
 
+export const heroTitleLine = style({
+  display: 'block',
+})
+
 export const heroTitleAccent = style({
   background: `linear-gradient(135deg, ${colors.primary500} 0%, ${colors.primary700} 100%)`,
   WebkitBackgroundClip: 'text',
@@ -240,23 +259,30 @@ export const heroTitleAccent = style({
   backgroundClip: 'text',
 })
 
+export const desktopBreak = style({
+  display: 'none',
+  '@media': { '(min-width: 768px)': { display: 'block' } },
+})
+
 export const heroFeatureRow = style({
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '10px',
+  gap: '8px',
   justifyContent: 'center',
-  marginTop: '28px',
+  marginTop: '20px',
+  '@media': { '(min-width: 768px)': { gap: '10px', marginTop: '28px' } },
 })
 
 export const heroFeaturePill = style({
-  padding: '8px 14px',
+  padding: '6px 12px',
   borderRadius: '999px',
   backgroundColor: 'rgba(255, 255, 255, 0.8)',
   border: `1px solid ${colors.gray75}`,
-  fontSize: '13px',
+  fontSize: '12px',
   fontWeight: 600,
   color: colors.gray700,
   backdropFilter: 'blur(6px)',
+  '@media': { '(min-width: 768px)': { padding: '8px 14px', fontSize: '13px' } },
 })
 
 export const trustBar = style({
@@ -332,19 +358,25 @@ export const marqueeItem = style({
 
 export const painCard = style({
   backgroundColor: colors.gray50,
-  borderRadius: '32px',
-  padding: '32px 24px 40px',
+  borderRadius: '20px',
+  padding: '24px 20px 28px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   textAlign: 'center',
-  minHeight: '420px',
   border: '1px solid transparent',
   transition: 'border-color 0.3s ease, background-color 0.3s ease',
   selectors: {
     '&:hover': {
       borderColor: colors.primary200,
       backgroundColor: colors.white,
+    },
+  },
+  '@media': {
+    '(min-width: 768px)': {
+      borderRadius: '32px',
+      padding: '32px 24px 40px',
+      minHeight: '420px',
     },
   },
 })
@@ -594,10 +626,10 @@ export const mobileMenuButton = style({
   flexDirection: 'column',
   justifyContent: 'center',
   gap: '5px',
-  width: '40px',
-  height: '40px',
-  padding: '8px',
-  borderRadius: '8px',
+  width: '44px',
+  height: '44px',
+  padding: '10px',
+  borderRadius: '10px',
   '@media': { '(min-width: 768px)': { display: 'none' } },
   selectors: {
     '&:hover': { backgroundColor: colors.gray50 },
@@ -624,6 +656,9 @@ export const mobileNav = style({
 })
 
 export const mobileNavLink = style({
+  display: 'flex',
+  alignItems: 'center',
+  minHeight: '48px',
   padding: '12px 16px',
   borderRadius: '12px',
   fontSize: '16px',
@@ -638,14 +673,20 @@ export const mobileNavLink = style({
   },
 })
 
+globalStyle(`${mobileNav} ${ctaButtonLarge}`, {
+  width: '100%',
+  minHeight: '52px',
+  marginTop: '8px',
+})
+
 export const heroScreenshotWrap = style({
-  marginTop: '56px',
+  marginTop: '32px',
   width: '100%',
   maxWidth: '1100px',
-  padding: '16px',
+  padding: '8px',
   backgroundColor: colors.gray900,
-  borderRadius: '24px',
-  boxShadow: '0 24px 64px rgba(59, 81, 204, 0.2), 0 0 0 1px rgba(255,255,255,0.06) inset',
+  borderRadius: '16px',
+  boxShadow: '0 16px 40px rgba(59, 81, 204, 0.18), 0 0 0 1px rgba(255,255,255,0.06) inset',
   '@media': {
     '(min-width: 768px)': { padding: '20px', borderRadius: '30px', marginTop: '72px' },
   },
@@ -658,35 +699,63 @@ export const heroInner = style({
   textAlign: 'center',
 })
 
+export const heroLogoWrap = style({
+  display: 'none',
+  '@media': { '(min-width: 768px)': { display: 'block' } },
+})
+
 export const heroLogo = style({ height: '40px', width: 'auto', marginBottom: '32px', objectFit: 'contain' })
 
 export const heroTitle = style({
-  fontSize: '36px',
+  fontSize: 'clamp(26px, calc((100vw - 56px) / 10), 64px)',
   fontWeight: 700,
-  lineHeight: 1.25,
-  letterSpacing: '-0.05em',
+  lineHeight: 1.28,
+  letterSpacing: '-0.045em',
   color: colors.gray900,
   maxWidth: '900px',
-  '@media': { '(min-width: 768px)': { fontSize: '64px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '64px', letterSpacing: '-0.05em' } },
 })
 
 export const heroSubtitle = style({
-  marginTop: '24px',
-  fontSize: '18px',
+  marginTop: '16px',
+  fontSize: '16px',
   fontWeight: 500,
-  lineHeight: 1.5,
-  letterSpacing: '-0.04em',
+  lineHeight: 1.55,
+  letterSpacing: '-0.03em',
   color: colors.gray700,
   maxWidth: '520px',
-  '@media': { '(min-width: 768px)': { fontSize: '28px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '28px', marginTop: '24px', letterSpacing: '-0.04em' } },
 })
 
 export const heroActions = style({
   display: 'flex',
-  flexWrap: 'wrap',
-  gap: '12px',
-  justifyContent: 'center',
-  marginTop: '40px',
+  flexDirection: 'column',
+  alignItems: 'stretch',
+  gap: '10px',
+  width: '100%',
+  maxWidth: '360px',
+  marginTop: '24px',
+  '@media': {
+    '(min-width: 768px)': {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      width: 'auto',
+      maxWidth: 'none',
+      marginTop: '40px',
+      gap: '12px',
+    },
+  },
+})
+
+globalStyle(`${heroActions} a`, {
+  width: '100%',
+  minHeight: '52px',
+  '@media': {
+    '(min-width: 768px)': { width: 'auto', minHeight: 'auto' },
+  },
 })
 
 export const heroScreenshot = style({
@@ -699,10 +768,10 @@ export const heroScreenshot = style({
 export const painGrid = style({
   display: 'grid',
   gridTemplateColumns: '1fr',
-  gap: '24px',
-  marginTop: '56px',
+  gap: '16px',
+  marginTop: '32px',
   '@media': {
-    '(min-width: 768px)': { gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' },
+    '(min-width: 768px)': { gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', marginTop: '56px' },
   },
 })
 
@@ -788,11 +857,12 @@ export const aboutIntro = style({
 })
 
 export const aboutIntroTitle = style({
-  fontSize: '32px',
+  fontSize: '26px',
   fontWeight: 700,
-  lineHeight: 1.3,
+  lineHeight: 1.35,
   letterSpacing: '-0.03em',
   color: colors.gray900,
+  wordBreak: 'keep-all',
   '@media': { '(min-width: 768px)': { fontSize: '44px' } },
 })
 
@@ -862,17 +932,18 @@ export const aboutValueBadge = style({
 export const aboutValueBody = style({
   position: 'relative',
   zIndex: 1,
-  maxWidth: '72%',
+  maxWidth: '100%',
   '@media': { '(min-width: 768px)': { maxWidth: '58%' } },
 })
 
 export const aboutValueTitle = style({
-  fontSize: '26px',
+  fontSize: '22px',
   fontWeight: 700,
-  lineHeight: 1.3,
+  lineHeight: 1.35,
   letterSpacing: '-0.03em',
   color: colors.gray700,
-  marginBottom: '12px',
+  marginBottom: '8px',
+  wordBreak: 'keep-all',
   '@media': { '(min-width: 768px)': { fontSize: '36px', marginBottom: '16px' } },
 })
 
@@ -886,18 +957,24 @@ export const aboutValueDesc = style({
 })
 
 export const aboutValueImage = style({
-  position: 'absolute',
-  right: '-8%',
-  top: '50%',
-  transform: 'translateY(-50%)',
-  width: 'auto',
-  height: 'auto',
-  maxWidth: '46%',
-  maxHeight: '140%',
-  objectFit: 'contain',
-  opacity: 0.2,
-  pointerEvents: 'none',
-  zIndex: 0,
+  display: 'none',
+  '@media': {
+    '(min-width: 768px)': {
+      display: 'block',
+      position: 'absolute',
+      right: '-8%',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      width: 'auto',
+      height: 'auto',
+      maxWidth: '46%',
+      maxHeight: '140%',
+      objectFit: 'contain',
+      opacity: 0.2,
+      pointerEvents: 'none',
+      zIndex: 0,
+    },
+  },
 })
 
 export const solutionSection = style({
@@ -947,16 +1024,18 @@ export const solutionColumn = style({
 
 export const painBadge = style({
   backgroundColor: colors.gray900,
-  borderRadius: '32px',
-  padding: '28px 20px 24px',
+  borderRadius: '20px',
+  padding: '20px 16px',
   textAlign: 'center',
   width: '100%',
-  minHeight: '160px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  '@media': { '(min-width: 1024px)': { minHeight: '189px' } },
+  '@media': {
+    '(min-width: 768px)': { borderRadius: '32px', padding: '28px 20px 24px', minHeight: '160px' },
+    '(min-width: 1024px)': { minHeight: '189px' },
+  },
 })
 
 export const painBadgeLabel = style({
@@ -1366,61 +1445,126 @@ export const ctaSection = style({
   overflow: 'hidden',
   backgroundColor: colors.dark,
   color: colors.white,
-  padding: '100px 0',
+  padding: '72px 0 88px',
+  '@media': { '(min-width: 768px)': { padding: '100px 0' } },
 })
 
 export const ctaGiftWrap = style({
   position: 'absolute',
-  right: '-5%',
-  bottom: '5%',
+  right: '-18%',
+  bottom: '8%',
   pointerEvents: 'none',
-  '@media': { '(min-width: 768px)': { right: '-10%', bottom: '10%' } },
+  opacity: 0.45,
+  '@media': { '(min-width: 768px)': { right: '-10%', bottom: '10%', opacity: 1 } },
 })
 
 export const ctaGift = style({
   width: 'auto',
   height: 'auto',
-  maxWidth: 'min(420px, 55vw)',
-  maxHeight: '420px',
+  maxWidth: 'min(220px, 48vw)',
+  maxHeight: '220px',
   objectFit: 'contain',
-  opacity: 0.35,
+  opacity: 0.28,
+  '@media': {
+    '(min-width: 768px)': { maxWidth: 'min(420px, 55vw)', maxHeight: '420px', opacity: 0.35 },
+  },
 })
 
 export const ctaInner = style({ position: 'relative', zIndex: 1, maxWidth: '640px' })
 
-export const ctaLogo = style({ height: '40px', width: 'auto', marginBottom: '48px', objectFit: 'contain' })
+export const ctaLogo = style({
+  height: '32px',
+  width: 'auto',
+  marginBottom: '24px',
+  objectFit: 'contain',
+  '@media': { '(min-width: 768px)': { height: '40px', marginBottom: '48px' } },
+})
 
 export const ctaTitle = style({
-  fontSize: '32px',
+  fontSize: '28px',
   fontWeight: 700,
-  lineHeight: 1.4,
+  lineHeight: 1.35,
   letterSpacing: '-0.03em',
-  '@media': { '(min-width: 768px)': { fontSize: '48px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '48px', lineHeight: 1.4 } },
 })
 
 export const ctaDesc = style({
-  marginTop: '24px',
-  fontSize: '18px',
+  marginTop: '16px',
+  fontSize: '16px',
   fontWeight: 500,
   lineHeight: 1.6,
   color: colors.gray300,
-  '@media': { '(min-width: 768px)': { fontSize: '22px' } },
+  wordBreak: 'keep-all',
+  '@media': { '(min-width: 768px)': { fontSize: '22px', marginTop: '24px' } },
 })
 
 export const ctaActions = style({
-  marginTop: '40px',
+  marginTop: '28px',
   display: 'flex',
-  flexWrap: 'wrap',
+  flexDirection: 'column',
+  alignItems: 'stretch',
   gap: '12px',
+  '@media': {
+    '(min-width: 768px)': {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      marginTop: '40px',
+    },
+  },
+})
+
+globalStyle(`${ctaActions} a`, {
+  width: '100%',
+  minHeight: '52px',
+  '@media': {
+    '(min-width: 768px)': { width: 'auto', minHeight: 'auto' },
+  },
 })
 
 export const footer = style({
-  padding: '32px 0',
+  padding: '28px 0 calc(108px + env(safe-area-inset-bottom))',
   backgroundColor: colors.dark,
   borderTop: '1px solid rgba(255,255,255,0.08)',
+  '@media': { '(min-width: 768px)': { padding: '32px 0' } },
 })
 
 export const footerText = style({ fontSize: '14px', color: colors.gray500, textAlign: 'center' })
+
+export const mobileStickyBar = style({
+  position: 'fixed',
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 90,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '8px',
+  padding: '12px 16px calc(12px + env(safe-area-inset-bottom))',
+  backgroundColor: 'rgba(255, 255, 255, 0.96)',
+  backdropFilter: 'blur(16px)',
+  borderTop: `1px solid ${colors.gray75}`,
+  boxShadow: '0 -8px 28px rgba(59, 81, 204, 0.12)',
+  '@media': { '(min-width: 768px)': { display: 'none' } },
+})
+
+export const mobileStickyText = style({
+  margin: 0,
+  textAlign: 'center',
+  fontSize: '13px',
+  fontWeight: 600,
+  color: colors.gray600,
+  letterSpacing: '-0.02em',
+})
+
+export const mobileStickyButton = style([
+  ctaButtonLarge,
+  {
+    width: '100%',
+    minHeight: '52px',
+    borderRadius: '12px',
+  },
+])
 
 export const textBlock = style({
   selectors: {

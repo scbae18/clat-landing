@@ -8,6 +8,7 @@ import SolutionSection from '@/components/landing/SolutionSection'
 import StepsSection from '@/components/landing/StepsSection'
 import CtaSection from '@/components/landing/CtaSection'
 import Footer from '@/components/landing/Footer'
+import MobileStickyCta from '@/components/landing/MobileStickyCta'
 import * as s from './landing.css'
 
 export default function LandingPage() {
@@ -23,6 +24,7 @@ export default function LandingPage() {
       <StepsSection />
       <CtaSection />
       <Footer />
+      <MobileStickyCta />
     </main>
   )
 }

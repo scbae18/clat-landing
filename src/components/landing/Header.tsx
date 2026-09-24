@@ -54,8 +54,8 @@ export default function Header() {
           ))}
         </nav>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <MotionButton href={APP_URL} className={s.ctaButton}>
+        <div className={s.headerActions}>
+          <MotionButton href={APP_URL} className={`${s.ctaButton} ${s.headerDesktopCta}`}>
             무료로 시작하기
           </MotionButton>
 
