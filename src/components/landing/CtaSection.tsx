@@ -60,7 +60,7 @@ export default function CtaSection() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <MotionButton href={`${APP_URL}/signup`} className={s.ctaShimmerButton}>
+            <MotionButton href={APP_URL} className={s.ctaShimmerButton}>
               무료로 시작하기
             </MotionButton>
           </motion.div>

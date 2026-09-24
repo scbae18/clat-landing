@@ -11,10 +11,6 @@ npm run dev
 
 기본 포트: **3001**
 
-## 환경 변수
+## 서비스 이동
 
-`.env.local`:
-
-```
-NEXT_PUBLIC_APP_URL=https://app.clat.kr
-```
+「무료로 시작하기」는 `src/lib/landing-content.ts`의 `APP_URL`(`https://clat-fe-v2.vercel.app`)로 이동합니다.

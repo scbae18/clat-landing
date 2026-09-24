@@ -61,7 +61,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.div className={s.heroActions} variants={fadeUp}>
-            <MotionButton href={`${APP_URL}/signup`} className={s.ctaButtonLarge}>
+            <MotionButton href={APP_URL} className={s.ctaButtonLarge}>
               무료로 시작하기
             </MotionButton>
             <MotionButton href="#steps" className={s.ctaButtonGhost}>

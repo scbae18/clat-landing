@@ -55,7 +55,7 @@ export default function Header() {
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <MotionButton href={`${APP_URL}/signup`} className={s.ctaButton}>
+          <MotionButton href={APP_URL} className={s.ctaButton}>
             무료로 시작하기
           </MotionButton>
 
@@ -106,7 +106,7 @@ export default function Header() {
                 {item.label}
               </motion.a>
             ))}
-            <MotionButton href={`${APP_URL}/signup`} className={s.ctaButtonLarge}>
+            <MotionButton href={APP_URL} className={s.ctaButtonLarge}>
               무료로 시작하기
             </MotionButton>
           </motion.nav>

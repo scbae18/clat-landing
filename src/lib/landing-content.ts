@@ -1,4 +1,4 @@
-export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://app.clat.kr'
+export const APP_URL = 'https://clat-fe-v2.vercel.app'
 
 export const painPoints = [
   {

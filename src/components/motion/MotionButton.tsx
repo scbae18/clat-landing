@@ -22,7 +22,7 @@ export function MotionButton({ href, className, children, external }: MotionButt
         transition: { type: 'spring' as const, stiffness: 400, damping: 22 },
       }
 
-  if (external || href.startsWith('#')) {
+  if (external || href.startsWith('#') || href.startsWith('http')) {
     return (
       <motion.a href={href} className={className} {...motionProps}>
         {children}
